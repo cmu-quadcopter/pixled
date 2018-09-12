@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 2.8)
 project(pixled)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -11,7 +11,9 @@ elseif(APPLE)
         "${CMAKE_SOURCE_DIR}/external/DronecodeSDK/lib/libdronecore_telemetry.dylib"
         )
 else()
-    set(dronecore_lib "${CMAKE_SOURCE_DIR}/external/DronecodeSDK/lib/libdronecore.so")
+    set(dronecore_lib
+        "${CMAKE_SOURCE_DIR}/external/DronecodeSDK/lib/libdronecore.so"
+        "${CMAKE_SOURCE_DIR}/external/DronecodeSDK/lib/libdronecore_telemetry.so")
 endif()
 
 add_executable(pixled main.cpp)
